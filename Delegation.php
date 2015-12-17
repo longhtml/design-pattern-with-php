@@ -15,9 +15,9 @@ class PlayList
         $this->_object = new $object();
     }
 
-    function addSong($location,$title)
+    function addSong($location,$title,$extension)
     {
-        $this->_songs[] = array("location"=>$location,"title"=>$title);
+        $this->_songs[] = array("location"=>$location,"title"=>$title,"extension"=>$extension);
     }
 
     function getPlayList()
@@ -60,8 +60,14 @@ class rmvbPlayListDelegation
     }
 }
 
+echo '<pre>';
 $oMP3PlayList = new PlayList("mp3");
-$oMP3PlayList->getPlayList();
+$oMP3PlayList->addSong('usa','to be loved','mp3');
+$oMP3PlayList->addSong('usa','to be','mp3');
+var_dump($oMP3PlayList->getPlayList());
+
 $oRMVBPlayList = new PlayList("rmvb");
-$oRMVBPlayList->getPlayList();
+$oRMVBPlayList->addSong('cn','moon','rmvb');
+$oRMVBPlayList->addSong('cn','ccc','rmvb');
+var_dump($oRMVBPlayList->getPlayList());
 ?>
